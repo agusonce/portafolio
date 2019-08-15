@@ -1,0 +1,57 @@
+<div class="container" *ngIf="project">
+	<h2>{{titulo}}</h2>
+
+	<div class="message success" *ngIf="status == 'success'">
+		{{mensaje}},
+		puedes <a [routerLink]="['/proyecto/'+save_project._id]"> verlo aqui</a>
+	</div>
+
+	<div class="message failed" *ngIf="status == 'failed'">
+		Error al realizar la operacion
+	</div>
+<form #projectForm="ngForm" (ngSubmit)="onSubmit(projectForm)">
+		<p>
+			<label for="name">Nombre</label>
+			<input type="text" name="name" #name="ngModel" [(ngModel)]="project.name" required />
+			<span class="form-error" *ngIf="name.touched && !name.valid">
+				*el nobre es obligatoria
+			</span>
+
+		</p>
+
+		<p>
+			<label for="descripcion">descripcion</label>
+			<input type="text" name="descripcion" #descripcion="ngModel" [(ngModel)]="project.descripcion" required/>
+			<span class="form-error" *ngIf="descripcion.touched && !descripcion.valid">
+				*la descripcion es obligatoria
+			</span>
+		</p>
+
+		<p>
+			<label for="categoria">categria</label>
+			<input type="text" name="categoria" #categoria="ngModel" [(ngModel)]="project.categoria" required/>
+			<span class="form-error" *ngIf="categoria.touched && !categoria.valid">
+				*la categoria es obligatoria
+			</span>
+		</p>
+
+		<p>
+			<label for="fecha">fecha</label>
+			<input type="number" name="fecha" #fecha="ngModel" [(ngModel)]="project.fecha" required/>
+		</p>
+
+		<p>
+			<label for="imagen">imagen</label>
+			<span class="image" *ngIf="project.imagen">
+				<img src="{{url+'getImage/'+project.imagen}}" width="100px" />
+			</span><br>
+			<input type="file" name="imagen" placeholder="Subir imagen..."  (change)="fileChangeEvent($event)"/>
+		</p>
+
+
+		<input type="submit" value="enviar" [disabled]="!projectForm.form.valid" />
+	</form>
+
+	
+		
+</div>

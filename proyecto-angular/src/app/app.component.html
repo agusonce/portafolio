@@ -1,0 +1,17 @@
+<header>
+	<ul>
+		<li><a [routerLink]="['/dobre-mi']" [routerLinkActive]="['actived']">sobre mi</a></li>
+		<li><a [routerLink]="['/proyectos']" [routerLinkActive]="['actived']">proyectos</a></li>
+		<li id='logo'><a [routerLink]="['/dobre-mi']" >ALB</a></li>
+
+		<li><a [routerLink]="['/contacto']" [routerLinkActive]="['actived']">Contacto</a></li>
+		<li><a [routerLink]="['/crear-proyecto']" [routerLinkActive]="['actived']">crear proyecto</a></li>
+	</ul>
+
+</header>
+<section id="content">
+	<router-outlet></router-outlet>
+</section>
+<footer>
+	Portafolio de Albornoz agustin en javaScript FullStack 
+</footer>
